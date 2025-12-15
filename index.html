@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- meta / seo / fonts -->
+  <meta charset="UTF-8" />
+  <title>Yeremie Mijon Cuts | Barber Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Yeremie Mijon Cuts – crisp fades, sharp lineups, and your style locked in. Book with Youvngpr in Dublin, Ohio."/>
+  <!-- <link rel="icon" href="/favicon.ico"> -->
+
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* reset + vars */
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#050505;--bg-alt:#101010;--text:#f5f5f5;--muted:#b3b3b3;--accent:#e50914;--border:#262626;--radius-lg:22px;--radius-sm:10px;--shadow-soft:0 18px 35px rgba(0,0,0,.65);--max-width:1100px}
+    body{font-family:Poppins,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+
+    /* layout helpers */
+    .page{min-height:100vh;display:flex;flex-direction:column}
+    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.25rem}
+    section{padding:4rem 0}
+    @media (min-width:900px){section{padding:5rem 0}}
+    .section-title{font-size:1.9rem;font-weight:600;margin-bottom:.75rem;letter-spacing:.04em;text-transform:uppercase}
+    .section-subtitle{color:var(--muted);font-size:.95rem;max-width:520px}
+
+    /* nav */
+    .nav{position:sticky;top:0;z-index:999;backdrop-filter:blur(10px);background:linear-gradient(to bottom,rgba(5,5,5,.96),rgba(5,5,5,.85));border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.25rem;max-width:var(--max-width);margin:0 auto;gap:1rem}
+    .nav-logo{display:flex;align-items:center;gap:.6rem}
+    .logo-mark{background:var(--accent);color:#fff;padding:.2rem .7rem;border-radius:999px;font-weight:700;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;box-shadow:var(--shadow-soft)}
+    .logo-text{font-weight:500;font-size:.95rem;color:var(--muted)}
+    .nav-links{display:none;gap:1.25rem;font-size:.9rem;text-transform:uppercase;letter-spacing:.09em}
+    .nav-links a{color:var(--muted);position:relative}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-.25rem;width:0;height:2px;background:var(--accent);transition:width .2s ease}
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{display:none}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1.35rem;border-radius:999px;border:1px solid transparent;font-size:.9rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,background .15s ease,border-color .15s ease;white-space:nowrap;gap:.4rem}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-soft);border-color:var(--accent)}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 20px 45px rgba(0,0,0,.75)}
+    .btn-outline{background:transparent;color:var(--text);border-color:var(--border)}
+    .btn-outline:hover{border-color:var(--accent);background:rgba(229,9,20,.12)}
+    .btn-sm{padding:.55rem 1.1rem;font-size:.8rem}
+    .nav-toggle{border:1px solid var(--border);background:rgba(15,15,15,.9);border-radius:999px;padding:.45rem .7rem;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem}
+    .nav-toggle span{margin-left:.25rem;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.09em}
+    .nav-mobile-menu{display:none;flex-direction:column;gap:.4rem;padding:0 1.25rem .9rem;background:rgba(5,5,5,.98);border-bottom:1px solid var(--border)}
+    .nav-mobile-menu a{font-size:.9rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;padding:.35rem 0}
+    .nav-mobile-menu a.book-link{margin-top:.4rem;color:var(--accent)}
+    @media (min-width:800px){.nav-links{display:flex}.nav-cta{display:flex}.nav-toggle,.nav-mobile-menu{display:none!important}}
+
+    /* hero */
+    .hero{padding:3.8rem 0 3.5rem}
+    @media (min-width:900px){.hero{padding:4.4rem 0 4rem}}
+    .hero-grid{display:grid;gap:2.5rem}
+    @media (min-width:900px){.hero-grid{grid-template-columns:1.1fr 1fr;align-items:center;gap:3.5rem}}
+    .hero-kicker{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+    .hero-title{font-size:clamp(2.3rem,4vw,3rem);line-height:1.1;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1rem}
+    .hero-title span{display:inline-block;background:var(--accent);padding:.2rem .5rem;border-radius:.3rem;box-shadow:var(--shadow-soft)}
+    .hero-text{color:var(--muted);max-width:30rem;font-size:.98rem;margin-bottom:1.4rem}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:1.4rem}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;font-size:.8rem;color:var(--muted)}
+    .hero-meta span{display:flex;align-items:center;gap:.4rem}
+    .hero-meta span::before{content:"•";color:var(--accent)}
+    .hero-card{background:radial-gradient(circle at top left,#151515,#050505);border-radius:var(--radius-lg);border:1px solid var(--border);padding:1.4rem 1.35rem;box-shadow:var(--shadow-soft);position:relative;overflow:hidden}
+    .hero-badge{position:absolute;top:1.1rem;right:1.1rem;background:#fff;color:#000;border-radius:999px;padding:.25rem .75rem;font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;font-weight:600}
+    .hero-photo-placeholder{height:210px;border-radius:16px;overflow:hidden;margin-bottom:1.1rem}
+    .hero-card-text{font-size:.85rem;color:var(--muted)}
+    .hero-card-text strong{color:#fff}
+    .hero-hours{display:flex;justify-content:space-between;align-items:center;margin-top:.85rem;font-size:.8rem;color:var(--muted)}
+    .pill{border-radius:999px;padding:.15rem .65rem;border:1px solid var(--border);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em}
+
+    /* statement */
+    .statement{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .statement-inner{display:grid;gap:2rem}
+    @media (min-width:900px){.statement-inner{grid-template-columns:1.2fr .9fr;align-items:center;gap:3rem}}
+    .statement-text{font-size:.98rem;color:var(--muted);margin-top:1rem;max-width:36rem}
+    .statement-highlight{border-left:3px solid var(--accent);padding-left:1rem;font-size:.95rem;color:#fff;margin-top:1.1rem}
+    .statement-meta{font-size:.85rem;color:var(--muted);margin-top:.85rem}
+    .statement-card{background:#050505;border-radius:var(--radius-lg);border:1px solid var(--border);padding:1.3rem 1.2rem}
+    .statement-tag{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:.8rem}
+    .statement-list{list-style:none;display:grid;gap:.6rem;font-size:.85rem;color:var(--muted)}
+    .statement-list li::before{content:"✓ ";color:var(--accent);margin-right:.2rem}
+
+    /* location (polished) */
+    .location-wrap{display:grid;gap:1.8rem}
+    @media (min-width:1000px){.location-wrap{grid-template-columns:1.15fr .85fr}}
+    .card-elevated{background:radial-gradient(100% 100% at 0% 0%,#121212 0%,#0a0a0a 100%);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 15px 40px rgba(0,0,0,.45)}
+    .card-head{display:flex;align-items:center;gap:.7rem;font-weight:600;font-size:1.05rem;letter-spacing:.04em;margin-bottom:1rem}
+    .card-head .dot{width:8px;height:8px;border-radius:999px;background:var(--accent)}
+    .kv{display:grid;gap:1rem}
+    .kv h4{font-size:.95rem;font-weight:600;color:#fff}
+    .kv p{color:var(--muted)}
+    .info-pill{display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--border);padding:.28rem .7rem;border-radius:999px;font-size:.78rem;color:var(--muted)}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,#222,transparent);margin:1rem 0}
+    .map-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1rem;padding:1.8rem;min-height:280px}
+    .subtle{font-size:.8rem;color:#777}
+
+    /* testimonials */
+    .testimonials{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .testimonials-grid{display:grid;gap:1.4rem;margin-top:1.5rem}
+    @media (min-width:800px){.testimonials-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .testimonial-card{background:#050505;border-radius:var(--radius-lg);border:1px solid var(--border);padding:1.3rem 1.15rem;display:flex;flex-direction:column;gap:.8rem;height:100%}
+    .testimonial-stars{font-size:.9rem;color:#ffd700}
+    .testimonial-text{font-size:.9rem;color:var(--muted);flex:1}
+    .testimonial-name{font-size:.85rem;text-transform:uppercase;letter-spacing:.14em;color:#fff}
+    .testimonial-meta{font-size:.75rem;color:var(--muted)}
+
+    /* gallery */
+    .gallery-grid{display:grid;gap:.9rem;margin-top:1.4rem}
+    @media (min-width:700px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    .gallery-item{position:relative;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);background:#000;min-height:150px}
+    .gallery-item img{width:100%;height:100%;object-fit:cover}
+
+    /* contact */
+    .contact-grid{display:grid;gap:2rem}
+    @media (min-width:900px){.contact-grid{grid-template-columns:1.1fr .9fr}}
+    .contact-card{background:#050505;border-radius:var(--radius-lg);border:1px solid var(--border);padding:1.5rem 1.35rem}
+    .contact-card h3{font-size:1.1rem;margin-bottom:.7rem}
+    .contact-form{display:grid;gap:.8rem;margin-top:.3rem}
+    .field{display:grid;gap:.3rem;font-size:.85rem}
+    .field label{color:var(--muted)}
+    .field input,.field textarea{background:#101010;border-radius:10px;border:1px solid var(--border);padding:.6rem .7rem;font-family:inherit;font-size:.9rem;color:var(--text);outline:none;transition:border-color .15s ease,background .15s ease}
+    .field input::placeholder,.field textarea::placeholder{color:#666}
+    .field input:focus,.field textarea:focus{border-color:var(--accent);background:#141414}
+    .field textarea{min-height:90px;resize:vertical}
+    .contact-note{font-size:.8rem;color:var(--muted);margin-top:.5rem}
+    .socials-card{background:#050505;border-radius:var(--radius-lg);border:1px solid var(--border);padding:1.4rem 1.35rem}
+    .socials-list{list-style:none;margin-top:.7rem;display:grid;gap:.5rem;font-size:.9rem}
+    .socials-list a{display:inline-flex;align-items:center;gap:.45rem;color:var(--muted)}
+    .socials-list a::before{content:"↗";color:var(--accent);font-size:.75rem}
+    .socials-handle{font-size:.8rem;color:#777}
+
+    /* footer */
+    .footer{border-top:1px solid var(--border);padding:1.5rem 0 1.2rem;font-size:.8rem;color:var(--muted);margin-top:auto}
+    .footer-inner{max-width:var(--max-width);margin:0 auto;padding:0 1.25rem;display:flex;flex-direction:column;gap:.7rem}
+    @media (min-width:700px){.footer-inner{flex-direction:row;align-items:center;justify-content:space-between}}
+    .footer-links{display:flex;flex-wrap:wrap;gap:.85rem}
+    .footer-links a{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem}
+    .footer-links a:hover{color:#fff}
+  </style>
+</head>
+
+<body>
+<div class="page">
+  <!-- nav -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <div class="logo-mark">Youvngpr</div>
+        <div class="logo-text">Yeremie Mijon Cuts</div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#statement">About</a>
+        <a href="#location">Location</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="https://yeremie.setmore.com/yeremie?fbclid=PAZXh0bgNhZW0CMTEAAacjFOZLYDNMBA4ptkmx2yAVDR7rBZ_tC6aHgFteo7BKCQJ3IC3exqhgFFfC7A_aem_AVZKFGqc8cfJaN4o08cH1w"
+           target="_blank" class="btn btn-primary btn-sm">Book Now</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰ <span>Menu</span></button>
+    </div>
+
+    <div class="nav-mobile-menu" id="navMobile">
+      <a href="#statement">About</a>
+      <a href="#location">Location</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="https://yeremie.setmore.com/yeremie?fbclid=PAZXh0bgNhZW0CMTEAAacjFOZLYDNMBA4ptkmx2yAVDR7rBZ_tC6aHgFteo7BKCQJ3IC3exqhgFFfC7A_aem_AVZKFGqc8cfJaN4o08cH1w"
+         target="_blank" class="book-link">Book Appointment</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- hero -->
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <p class="hero-kicker">Crisp fades • Real energy</p>
+            <h1 class="hero-title">I’ve never<br/><span>been average.</span></h1>
+            <p class="hero-text">It’s not just a cut. It’s <strong>your style</strong>. Yeremie locks in your fade,
+              your lineup, and your confidence every time you sit in the chair.</p>
+            <div class="hero-actions">
+              <a href="https://yeremie.setmore.com/yeremie?fbclid=PAZXh0bgNhZW0CMTEAAacjFOZLYDNMBA4ptkmx2yAVDR7rBZ_tC6aHgFteo7BKCQJ3IC3exqhgFFfC7A_aem_AVZKFGqc8cfJaN4o08cH1w" target="_blank" class="btn btn-primary">Book Appointment</a>
+              <a href="#gallery" class="btn btn-outline">View Gallery</a>
+            </div>
+            <div class="hero-meta">
+              <span>Dublin • Sawmill Rd (Salon Lofts)</span>
+              <span>Open Tue–Sun</span>
+              <span>By appointment & select walk-ins</span>
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <div class="hero-badge">Since 2022</div>
+            <div class="hero-photo-placeholder"></div>
+            <p class="hero-card-text"><strong>“Money don’t make me, I make money.”</strong> Every cut is done with intention – from your fade to your beard line. No rushed work, no “good enough.”</p>
+            <div class="hero-hours"><span>Tue–Sun • 10am–7pm*</span><span class="pill">Book online</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- statement -->
+    <section class="statement" id="statement">
+      <div class="container">
+        <div class="statement-inner">
+          <div>
+            <h2 class="section-title">Barber Statement</h2>
+            <p class="section-subtitle">Every cut has a purpose. You’re not just another head in the chair – you’re a walking ad for the work.</p>
+            <p class="statement-text">“I’ve never been average. When you sit in my chair, it’s not just a cut – it’s your style. I pay attention to your hair, your face, and your vibe so you leave with something that actually fits you.”</p>
+            <p class="statement-highlight">It’s simple: if you don’t feel like yourself, I’m not done yet. Money don’t make me – I make money by making sure every person that walks out of my loft looks locked in.</p>
+            <p class="statement-text">Clean fades, sharp lines, and a chill environment. No ego, no weird energy. Just real work and real results.</p>
+            <p class="statement-meta">— Yeremie Mijon, Youvngpr</p>
+          </div>
+
+          <div class="statement-card">
+            <div class="statement-tag">What to expect</div>
+            <ul class="statement-list">
+              <li>Consistent skin, low, mid, and high fades</li>
+              <li>Customized cuts – no “one size fits all” approach</li>
+              <li>Beard trims and lineups that match your face structure</li>
+              <li>Clean, private loft inside Salon Lofts Dublin Sawmill</li>
+              <li>Online booking through Setmore with reminders</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- location (centered right card) -->
+    <section id="location">
+      <div class="container">
+        <h2 class="section-title">Location &amp; Hours</h2>
+        <p class="section-subtitle">Pull up to the loft, lock in your cut, and walk out feeling sharper. Inside Salon Lofts Dublin Sawmill.</p>
+
+        <div class="location-wrap">
+          <!-- left: details -->
+          <div class="card-elevated" style="padding:1.4rem 1.3rem;">
+            <div class="card-head"><span class="dot"></span><span>Shop Details</span></div>
+
+            <div class="kv">
+              <div>
+                <h4>Address</h4>
+                <p>
+                  Yeremie Mijon Cuts<br/>
+                  Salon Lofts Dublin Sawmill<br/>
+                  7501 Sawmill Rd<br/>
+                  Dublin, OH 43016
+                </p>
+                <div style="margin-top:.6rem;display:flex;gap:.5rem;flex-wrap:wrap;">
+                  <span class="info-pill">Dublin • Sawmill</span>
+                  <span class="info-pill">Free Parking</span>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div>
+                <h4>Hours*</h4>
+                <p>
+                  Tue–Thu: 10am – 7pm<br/>
+                  Fri–Sat: 10am – 8pm<br/>
+                  Sun: 11am – 4pm<br/>
+                  Mon: Closed
+                </p>
+              </div>
+
+              <div class="divider"></div>
+
+              <div>
+                <h4>Parking</h4>
+                <p>Free parking available in the shared lot in front of Salon Lofts.</p>
+              </div>
+            </div>
+
+            <p class="subtle" style="margin-top:.9rem;">*Hours can be adjusted. Update these to match Yeremie’s actual schedule.</p>
+          </div>
+
+          <!-- right: directions (centered + shorter copy) -->
+          <div class="card-elevated map-cta">
+            <h3 class="section-title" style="margin:0;font-size:1.3rem;">Get directions to the shop.</h3>
+
+            <div style="display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;">
+              <a class="btn btn-primary"
+                 href="https://maps.apple.com/?daddr=7501%20Sawmill%20Rd%2C%20Dublin%2C%20OH%2043016&dirflg=d"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Open driving directions in Apple Maps">Open in Apple Maps</a>
+
+              <a class="btn btn-outline"
+                 href="https://www.google.com/maps/dir/?api=1&destination=7501+Sawmill+Rd,+Dublin,+OH+43016"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Open driving directions in Google Maps">Open in Google Maps</a>
+            </div>
+
+            <p class="subtle">Tip: long-press the address to copy if your map app isn’t installed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- testimonials -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <h2 class="section-title">Client Reviews</h2>
+        <p class="section-subtitle">Real people, real cuts. Once you find your barber, you don’t switch up.</p>
+
+        <div class="testimonials-grid">
+          <article class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">“Been rocking with Yeremie for a minute. Fades are always clean, beard always lined. I don’t have to tell him what to do anymore – he already knows how I like it.”</p>
+            <div><p class="testimonial-name">MARCOS G.</p><p class="testimonial-meta">Weekly cut • Mid fade + beard</p></div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">“Pulled up off the gram not knowing what to expect. Bro really took his time and made sure everything was even. I left feeling like I had a whole rebrand.”</p>
+            <div><p class="testimonial-name">ANDRE W.</p><p class="testimonial-meta">First-time client • Low taper</p></div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">“Zero push backs, no weird corners, just clean work. Lineup stayed crispy for days. If you’re picky about your hair, this is who you want touching it.”</p>
+            <div><p class="testimonial-name">BRIANA T.</p><p class="testimonial-meta">Special event • Fade + design</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- gallery -->
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <p class="section-subtitle">Before-and-afters, fades, tapers, designs, and more. Drop in clean, walk out different.</p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="images/cut1.jpg" alt="Skin fade with beard lineup by Yeremie"></div>
+          <div class="gallery-item"><img src="images/cut2.jpg" alt="Low taper fade by Yeremie"></div>
+          <div class="gallery-item"><img src="images/cut3.jpg" alt="Mid fade with curls on top"></div>
+          <div class="gallery-item"><img src="images/cut4.jpg" alt="Design cut detail shot"></div>
+          <div class="gallery-item"><img src="images/cut5.jpg" alt="Waves with sharp lineup"></div>
+          <div class="gallery-item"><img src="images/cut6.jpg" alt="High fade with beard trim"></div>
+        </div>
+
+        <p class="contact-note" style="margin-top:.7rem;font-size:.8rem;">Replace the image file paths with Yeremie’s real photos (from his phone/IG).</p>
+      </div>
+    </section>
+
+    <!-- contact + socials -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact &amp; Socials</h2>
+        <p class="section-subtitle">Questions before you book? Text me through this form — it’ll open your Messages app with everything filled out.</p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Text the Barber</h3>
+            <form id="smsForm" class="contact-form">
+              <div class="field">
+                <label for="c_name">Your Name</label>
+                <input id="c_name" name="name" type="text" placeholder="Your name" required />
+              </div>
+              <div class="field">
+                <label for="c_phone">Your Phone</label>
+                <input id="c_phone" name="phone" type="tel" placeholder="123-456-7890" required />
+              </div>
+              <div class="field">
+                <label for="c_msg">Message</label>
+                <textarea id="c_msg" name="message" placeholder="Ask about availability, services, or anything else." required></textarea>
+              </div>
+              <button class="btn btn-outline" type="submit" id="smsSubmit">Open in Messages</button>
+              <p class="contact-note">note: this doesn’t auto-send; it opens your SMS app so you can hit “Send.”</p>
+              <p id="smsStatus" class="contact-note" style="display:none;"></p>
+            </form>
+          </div>
+
+          <aside class="socials-card">
+            <h3>Socials</h3>
+            <p class="section-subtitle">Follow <strong>@youvngpr_</strong> for fresh cuts, drop-ins, and last-minute openings.</p>
+            <ul class="socials-list">
+              <li><a href="https://www.instagram.com/youvngpr_/" target="_blank" rel="noopener">Instagram <span class="socials-handle">@youvngpr_</span></a></li>
+              <li><a href="https://www.tiktok.com/@youungpr" target="_blank" rel="noopener">TikTok <span class="socials-handle">@youungpr</span></a></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Yeremie Mijon Cuts. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="https://yeremie.setmore.com/yeremie?fbclid=PAZXh0bgNhZW0CMTEAAacjFOZLYDNMBA4ptkmx2yAVDR7rBZ_tC6aHgFteo7BKCQJ3IC3exqhgFFfC7A_aem_AVZKFGqc8cfJaN4o08cH1w" target="_blank" rel="noopener">Book Now</a>
+        <a href="#location">Find Me</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- scripts: nav toggle, year, sms compose -->
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById("navToggle");
+  const navMobile = document.getElementById("navMobile");
+  if (navToggle && navMobile) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = navMobile.style.display === "flex";
+      navMobile.style.display = isOpen ? "none" : "flex";
+    });
+    navMobile.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => { navMobile.style.display = "none"; });
+    });
+  }
+
+  // dynamic year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // contact form -> open sms composer with prefilled text
+  const OWNER_PHONE = "+16148496794"; // <-- replace with Yeremie's real number (E.164 format)
+  const smsForm = document.getElementById('smsForm');
+  const smsBtn  = document.getElementById('smsSubmit');
+  const smsStatus = document.getElementById('smsStatus');
+
+  function buildSmsLink(phone, name, theirPhone, message){
+    // compose body
+    const bodyText =
+      `Hi, this is ${name} (${theirPhone}).%0A%0A` +
+      `${message}`;
+    // ios needs &body=, many androids accept ?body=
+    const isIOS = /iPad|iPhone|iPod/i.test(navigator.userAgent);
+    const sep = isIOS ? '&' : '?';
+    return `sms:${encodeURIComponent(phone)}${sep}body=${bodyText}`;
+  }
+
+  smsForm?.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = document.getElementById('c_name').value.trim();
+    const fromPhone = document.getElementById('c_phone').value.trim();
+    const msg = document.getElementById('c_msg').value.trim();
+
+    if(!name || !fromPhone || !msg){
+      smsStatus.style.display='block';
+      smsStatus.style.color='#e66';
+      smsStatus.textContent='please fill out all fields.';
+      return;
+    }
+
+    const href = buildSmsLink(OWNER_PHONE, name, fromPhone, msg);
+    // try open sms app
+    window.location.href = href;
+
+    // show tiny note in case desktop browser can’t handle sms:
+    smsStatus.style.display='block';
+    smsStatus.style.color='#7ee787';
+    smsStatus.textContent='opening your messages app... if nothing happens, you might be on desktop without SMS.';
+  });
+</script>
+</body>
+</html>
