@@ -1,0 +1,59 @@
+---
+// Gallery images — add or remove items here as needed
+const images = [
+  { src: '/Gallery/nba.jpg',    alt: 'Cut by Yeremie',  cls: 'gi-1' },
+  { src: '/Gallery/img2.jpg',   alt: 'Fade',            cls: 'gi-2' },
+  { src: '/Gallery/img3.jpg',   alt: 'Lineup',          cls: 'gi-3' },
+  { src: '/Gallery/img7.jpg',   alt: 'Cut',             cls: 'gi-4' },
+  { src: '/Gallery/img5.jpg',   alt: 'Fade',            cls: 'gi-5' },
+  { src: '/Gallery/img6.jpg',   alt: 'Cut',             cls: 'gi-6' },
+  { src: '/Gallery/hero1.jpeg', alt: 'Banner shot',     cls: 'gi-7' },
+];
+---
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gal-header">
+      <div>
+        <span class="sec-label sr">02 — Work</span>
+        <h2 class="sec-head sr sr-d1">The Gallery.</h2>
+      </div>
+      <a href="https://www.instagram.com/youvngprcuts/" target="_blank" rel="noopener" class="gal-ig sr sr-d2">
+        @youvngprcuts on Instagram ↗
+      </a>
+    </div>
+
+    <div class="gal-grid">
+      {images.map((img, i) => (
+        <div class={`gal-i ${img.cls} sr sr-d${(i % 3) + 1}`}>
+          <img src={img.src} alt={img.alt} loading="lazy" decoding="async"/>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .gal-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+  .gal-ig { font-family: var(--fm); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); transition: color .15s; align-self: flex-end; }
+  .gal-ig:hover { color: var(--text); }
+  .gal-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 3px; }
+  .gal-i { overflow: hidden; background: #111; position: relative; }
+  .gal-i img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.22,1,.36,1), filter .4s; }
+  .gal-i:hover img { transform: scale(1.06); filter: brightness(1.12); }
+  .gal-i::after { content: ''; position: absolute; inset: 0; border: 0px solid var(--red); transition: border-width .2s; }
+  .gal-i:hover::after { border-width: 2px; }
+  .gi-1 { grid-column: span 4; grid-row: span 2; aspect-ratio: 16/10; }
+  .gi-2 { grid-column: span 2; aspect-ratio: 4/3; }
+  .gi-3 { grid-column: span 2; aspect-ratio: 4/3; }
+  .gi-4 { grid-column: span 2; aspect-ratio: 3/4; }
+  .gi-5 { grid-column: span 2; aspect-ratio: 3/4; }
+  .gi-6 { grid-column: span 2; aspect-ratio: 3/4; }
+  .gi-7 { grid-column: span 6; aspect-ratio: 21/6; }
+  @media(max-width: 700px) {
+    .gal-grid { grid-template-columns: 1fr 1fr; }
+    .gi-1, .gi-7 { grid-column: span 2; aspect-ratio: 16/9; }
+    .gi-2, .gi-3, .gi-4, .gi-5, .gi-6 { grid-column: span 1; aspect-ratio: 3/4; grid-row: span 1; }
+  }
+</style>

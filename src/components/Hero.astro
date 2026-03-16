@@ -1,0 +1,178 @@
+---
+// No props needed — all content is static
+---
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <!-- Left: headline + CTA -->
+      <div>
+        <div class="hero-eyebrow he he1">
+          <div class="hero-rule"></div>
+          <span class="pill">Est. 2022 · Columbus, OH</span>
+        </div>
+        <h1 class="hero-hl he he2">
+          NEVER<br/>
+          <span class="outline">BEEN</span><br/>
+          <span class="red">AVERAGE.</span>
+        </h1>
+        <p class="hero-body he he3">
+          Sharp fades. Clean lineups. <strong>Every time.</strong><br/>
+          Dublin, OH — book your slot below.
+        </p>
+        <div class="hero-cta he he4">
+          <a href="https://getsqr.co/yeremie-mijon" target="_blank" rel="noopener" class="btn btn-red">
+            Book an Appointment →
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: barber info card -->
+      <div class="bc he he3">
+        <div class="bc-top">
+          <div>
+            <div class="bc-name">YEREMIE<br/>MIJON</div>
+            <div class="bc-handle">@youvngprcuts</div>
+          </div>
+          <!-- JS fills this in based on real hours -->
+          <span class="pill" id="statusPill"></span>
+        </div>
+
+        <div class="bc-stats">
+          <div class="bc-stat">
+            <div class="bc-stat-v">2022</div>
+            <div class="bc-stat-l">Since</div>
+          </div>
+          <div class="bc-stat">
+            <div class="bc-stat-v">5.0</div>
+            <div class="bc-stat-l">Google</div>
+          </div>
+          <div class="bc-stat">
+            <div class="bc-stat-v">13</div>
+            <div class="bc-stat-l">Suite</div>
+          </div>
+        </div>
+
+        <div class="bc-svcs">
+          <span class="bc-svc">Fades</span>
+          <span class="bc-svc">Lineups</span>
+          <span class="bc-svc">Beard</span>
+          <span class="bc-svc">Eyebrows</span>
+          <span class="bc-svc">Kids</span>
+        </div>
+
+        <div class="bc-where">
+          <div>
+            <div class="bc-where-name">Salon Lofts Sawmill</div>
+            <div class="bc-where-addr">7501 Sawmill Rd · Dublin, OH 43016</div>
+          </div>
+          <div class="live-dot" id="liveDot"></div>
+        </div>
+
+        <a href="https://getsqr.co/yeremie-mijon" target="_blank" rel="noopener" class="bc-book">
+          <span>Book a Session</span>
+          <span class="bc-arr">→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* vertical red rule on left edge */
+  .hero {
+    min-height: 92vh; display: grid; align-items: center;
+    padding: 6rem 0 5rem; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--red) 20%, var(--red) 80%, transparent);
+  }
+  .hero-grid { display: grid; gap: 3rem; align-items: center; }
+  @media(min-width: 960px) { .hero-grid { grid-template-columns: 1fr 380px; gap: 5rem; } }
+
+  .hero-eyebrow { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.6rem; }
+  .hero-rule { width: 32px; height: 1px; background: var(--red); }
+  .hero-hl { font-family: var(--fd); font-size: clamp(4.5rem,10vw,8.5rem); line-height: .88; letter-spacing: .025em; text-transform: uppercase; margin-bottom: 1.6rem; }
+  .hero-hl .red { color: var(--red); }
+  .hero-hl .outline { -webkit-text-stroke: 1px var(--text); color: transparent; }
+  .hero-body { font-size: 1rem; color: var(--dim); line-height: 1.75; max-width: 26rem; margin-bottom: 2.2rem; }
+  .hero-body strong { color: var(--text); font-weight: 400; }
+  .hero-cta { margin-bottom: 2rem; }
+  .hero-meta { font-family: var(--fm); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+  .hero-meta span { color: var(--text); }
+
+  /* barber card */
+  .bc { background: var(--bg2); border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .bc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--red); }
+  .bc-top { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 1.3rem 1rem; border-bottom: 1px solid var(--border); }
+  .bc-name { font-family: var(--fd); font-size: 1.7rem; letter-spacing: .04em; line-height: .92; }
+  .bc-handle { font-family: var(--fm); font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-top: .35rem; }
+  .bc-stats { display: grid; grid-template-columns: repeat(3,1fr); border-bottom: 1px solid var(--border); }
+  .bc-stat { padding: .9rem .7rem; text-align: center; }
+  .bc-stat + .bc-stat { border-left: 1px solid var(--border); }
+  .bc-stat-v { font-family: var(--fd); font-size: 2rem; letter-spacing: .02em; line-height: 1; color: var(--text); }
+  .bc-stat-l { font-family: var(--fm); font-size: .54rem; letter-spacing: .15em; text-transform: uppercase; color: var(--dim); margin-top: .28rem; }
+  .bc-svcs { display: flex; flex-wrap: wrap; gap: .35rem; padding: .9rem 1.3rem; border-bottom: 1px solid var(--border); }
+  .bc-svc { font-family: var(--fm); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); border: 1px solid var(--border); padding: .2rem .55rem; }
+  .bc-where { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 1rem; padding: .85rem 1.3rem; border-bottom: 1px solid var(--border); }
+  .bc-where-name { font-size: .88rem; color: var(--text); line-height: 1.3; }
+  .bc-where-addr { font-family: var(--fm); font-size: .55rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); margin-top: .2rem; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: #444; transition: background .4s, box-shadow .4s; }
+  .live-dot.open { background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,.7); animation: pulse 2s ease-in-out infinite; }
+  .live-dot.closed { background: var(--red); box-shadow: 0 0 6px rgba(204,18,9,.4); animation: none; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 6px rgba(34,197,94,.6); } 50% { box-shadow: 0 0 14px rgba(34,197,94,.9); } }
+  .bc-book { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.3rem; background: var(--red); color: #fff; font-family: var(--fm); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; transition: background .15s, letter-spacing .15s; cursor: pointer; }
+  .bc-book:hover { background: var(--red-hi); letter-spacing: .2em; }
+  .bc-arr { transition: transform .2s; }
+  .bc-book:hover .bc-arr { transform: translateX(5px); }
+
+  /* hero entrance animations */
+  @keyframes up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  .he { opacity: 0; animation: up .7s cubic-bezier(.22,1,.36,1) forwards; }
+  .he1 { animation-delay: .04s; } .he2 { animation-delay: .16s; } .he3 { animation-delay: .28s; }
+  .he4 { animation-delay: .42s; } .he5 { animation-delay: .56s; }
+</style>
+
+<script>
+  // Live hours status — rechecks every 60 seconds
+  const SHOP_HOURS: Record<number, [number,number] | null> = {
+    0: [11,16], 1: [10,19], 2: null,
+    3: [10,19], 4: [10,19], 5: [10,19], 6: [10,19],
+  };
+  const DAY_NAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  function updateStatus() {
+    const et  = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const day = et.getDay();
+    const h   = et.getHours() + et.getMinutes() / 60;
+    const hrs = SHOP_HOURS[day];
+    const isOpen = !!(hrs && h >= hrs[0] && h < hrs[1]);
+
+    const dot  = document.getElementById('liveDot');
+    const pill = document.getElementById('statusPill');
+    if (!dot || !pill) return;
+
+    dot.classList.toggle('open',   isOpen);
+    dot.classList.toggle('closed', !isOpen);
+    pill.classList.toggle('open',   isOpen);
+    pill.classList.toggle('closed', !isOpen);
+
+    if (isOpen) {
+      pill.textContent = '● Open Now';
+    } else {
+      let next = '';
+      for (let i = 1; i <= 7; i++) {
+        const d = (day + i) % 7;
+        const h2 = SHOP_HOURS[d];
+        if (h2) { next = DAY_NAMES[d] + ' ' + h2[0] + 'am'; break; }
+      }
+      pill.textContent = '● Closed' + (next ? ' · Opens ' + next : '');
+    }
+  }
+
+  updateStatus();
+  setInterval(updateStatus, 60_000);
+</script>

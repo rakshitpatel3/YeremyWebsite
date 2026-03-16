@@ -1,0 +1,97 @@
+---
+// No props
+---
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="sec-label sr">05 — Contact</span>
+    <h2 class="sec-head sr sr-d1">Get In Touch.</h2>
+
+    <div class="con-grid">
+      <div class="sr sr-d2">
+        <p class="con-body">Got a question before you book? Fill this out and shoot me a text.</p>
+        <form id="smsForm" class="con-form">
+          <div class="field">
+            <label for="c_name">Name</label>
+            <input id="c_name" type="text" placeholder="Your name" required/>
+          </div>
+          <div class="field">
+            <label for="c_phone">Number</label>
+            <input id="c_phone" type="tel" placeholder="000-000-0000" required/>
+          </div>
+          <div class="field">
+            <label for="c_msg">Message</label>
+            <textarea id="c_msg" placeholder="Ask about availability, services, pricing…" required></textarea>
+          </div>
+          <button class="btn btn-red" type="submit" style="width:fit-content">Open in Messages →</button>
+          <p id="smsStatus" class="con-note" style="display:none"></p>
+        </form>
+      </div>
+
+      <div class="con-aside sr sr-d3">
+        <div>
+          <div class="aside-head">Follow Along</div>
+          <div class="soc-row">
+            <a href="https://www.instagram.com/youvngprcuts/" target="_blank" rel="noopener" class="soc-a">
+              <span>Instagram</span><span class="handle">@youvngprcuts ↗</span>
+            </a>
+            <a href="https://www.tiktok.com/@youvngprcuts" target="_blank" rel="noopener" class="soc-a">
+              <span>TikTok</span><span class="handle">@youvngprcuts ↗</span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="aside-head">Quick Info</div>
+          <p class="qinfo">
+            <strong>Booking:</strong> Online via Squire<br/>
+            <strong>Walk-ins:</strong> Text first to check availability<br/>
+            <strong>Closed:</strong> Every Tuesday
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact { padding: 6rem 0; background: #0f0e0c; border-top: 1px solid var(--border); }
+  .con-grid { display: grid; gap: 4rem; margin-top: 2.5rem; }
+  @media(min-width: 900px) { .con-grid { grid-template-columns: 1.3fr 1fr; } }
+  .con-body { font-size: .88rem; color: var(--dim); line-height: 1.7; margin-bottom: 1.5rem; }
+  .con-form { display: grid; gap: .85rem; }
+  .field { display: grid; gap: .32rem; }
+  .field label { font-family: var(--fm); font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
+  .field input, .field textarea { background: var(--bg2); border: 1px solid var(--border); padding: .75rem .9rem; color: var(--text); font-family: var(--fb); font-size: .9rem; outline: none; transition: border-color .15s; border-radius: 0; }
+  .field input::placeholder, .field textarea::placeholder { color: #2e2e2e; }
+  .field input:focus, .field textarea:focus { border-color: rgba(204,18,9,.5); }
+  .field textarea { min-height: 100px; resize: vertical; }
+  .con-note { font-family: var(--fm); font-size: .62rem; letter-spacing: .08em; color: var(--dim); margin-top: .5rem; }
+  .con-aside { display: flex; flex-direction: column; gap: 2rem; }
+  .aside-head { font-family: var(--fm); font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--red); margin-bottom: .9rem; }
+  .soc-row { display: grid; gap: 2px; background: var(--border); }
+  .soc-a { display: flex; align-items: center; justify-content: space-between; padding: .95rem 1.1rem; background: #0f0e0c; font-size: .88rem; color: var(--dim); transition: all .15s; }
+  .soc-a:hover { background: var(--bg3); color: var(--text); }
+  .soc-a .handle { font-family: var(--fm); font-size: .6rem; letter-spacing: .1em; color: var(--dim); }
+  .soc-a:hover .handle { color: var(--red); }
+  .qinfo { font-size: .85rem; color: var(--dim); line-height: 1.9; }
+  .qinfo strong { color: var(--text); font-weight: 400; }
+</style>
+
+<script>
+  document.getElementById('smsForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const n = (document.getElementById('c_name') as HTMLInputElement).value.trim();
+    const p = (document.getElementById('c_phone') as HTMLInputElement).value.trim();
+    const m = (document.getElementById('c_msg') as HTMLTextAreaElement).value.trim();
+    const s = document.getElementById('smsStatus')!;
+    if (!n || !p || !m) {
+      s.style.display = 'block'; s.style.color = '#e55';
+      s.textContent = 'Fill out all fields first.'; return;
+    }
+    const body = `Hi, this is ${n} (${p}).%0A%0A${m}`;
+    const sep  = /iPad|iPhone|iPod/i.test(navigator.userAgent) ? '&' : '?';
+    window.location.href = `sms:${encodeURIComponent('+17879753714')}${sep}body=${body}`;
+    s.style.display = 'block'; s.style.color = '#7ee787';
+    s.textContent = 'Opening Messages… (on desktop? Text directly.)';
+  });
+</script>

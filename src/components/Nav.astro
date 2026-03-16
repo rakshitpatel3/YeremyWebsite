@@ -1,0 +1,41 @@
+---
+// Nav accepts an optional `page` prop so we can highlight the active link later
+const { page = 'home' } = Astro.props;
+---
+
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-main">YOUVNGPRCUTS<em>.</em></div>
+      <div class="logo-sub">Yeremie Mijon · Dublin, OH</div>
+    </a>
+    <nav class="nav-links">
+      <a href="/#about">About</a>
+      <a href="/#gallery">Work</a>
+      <a href="/#reviews">Reviews</a>
+      <a href="/#location">Location</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+    <a href="https://getsqr.co/yeremie-mijon" target="_blank" rel="noopener" class="btn btn-red nav-cta">Book →</a>
+    <button class="nav-ham" id="navHam" aria-label="Toggle menu">Menu</button>
+  </div>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="/#about">About</a>
+    <a href="/#gallery">Work</a>
+    <a href="/#reviews">Reviews</a>
+    <a href="/#location">Location</a>
+    <a href="/#contact">Contact</a>
+    <a href="https://getsqr.co/yeremie-mijon" target="_blank" rel="noopener">Book Appointment →</a>
+  </div>
+</header>
+
+<script>
+  const ham = document.getElementById('navHam');
+  const drw = document.getElementById('navDrawer');
+  ham?.addEventListener('click', () => {
+    drw!.style.display = drw!.style.display === 'flex' ? 'none' : 'flex';
+  });
+  drw?.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => { drw!.style.display = 'none'; })
+  );
+</script>

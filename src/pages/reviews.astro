@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const reviews = [
+  { name: 'Charles Bondurant', when: '3 days ago',    quote: "Yeremie does a great job on my son's haircut. He takes his time. He doesn't rush like some barbers do to get more money. I really appreciate him." },
+  { name: 'Ali',               when: '1 week ago',    quote: 'Best barber in the 614!' },
+  { name: 'Michael Kruglov',   when: '1 week ago',    quote: 'Yeremie is fantastic.' },
+  { name: 'Parker Campbell',   when: '2 weeks ago',   quote: 'He did a fantastic job and was great to talk to. Definitely returning!' },
+  { name: 'Ameer',             when: '2 weeks ago',   quote: 'Yeremie is cracked. Pure art.' },
+  { name: 'Jose',              when: '3 weeks ago',   quote: 'Yeremie el mas duro!!! 100% Recommended 🔥🔥🇵🇷' },
+  { name: 'Austin',            when: '3 weeks ago',   quote: 'Yeremie the best barber in Columbus.' },
+  { name: 'Ali Mosalem',       when: '1 month ago',   quote: 'Chill, listens to what you want, and gets it right every time. Clean fades and I always leave looking right.' },
+  { name: 'Alexander',         when: '1 month ago',   quote: "He's attentive, skilled, and really listens to what you want. A great experience — highly recommend!" },
+  { name: 'Russell',           when: '1 month ago',   quote: 'Best haircut in central Ohio.' },
+  { name: 'Norber',            when: '2 months ago',  quote: "This is my barber and I don't change him for no one!!! 🔥🔥🔥" },
+  { name: 'Joe R',             when: '2 months ago',  quote: 'Yeremie gives fire cuts. Very good experience, highly recommend.' },
+  { name: 'Sara',              when: '2 months ago',  quote: "He's the besttt barber in the cityyy." },
+  { name: 'Grayson Benjamin',  when: '2 months ago',  quote: 'Best in the business.' },
+  { name: 'Joe Deptowicz',     when: '3 months ago',  quote: 'Great cut and conversation. Highly recommend.' },
+  { name: 'Andres',            when: '3 months ago',  quote: 'Yeremie is dat dude fr fr — blessed me today.' },
+  { name: 'Josiah',            when: '3 months ago',  quote: 'Haircut came out exactly how I wanted. Taper was blended perfectly on both sides. 10/10.' },
+  { name: 'Jonathan Escobar',  when: '4 months ago',  quote: 'Papiii tumba a cualquier barber — my boy certified 🔥' },
+];
+
+// top 3 featured pull quotes
+const featured = [
+  { quote: 'Best barber in the 614.', name: 'Ali' },
+  { quote: 'Pure art.', name: 'Ameer' },
+  { quote: 'Always leave looking right.', name: 'Ali Mosalem' },
+];
+---
+
+<BaseLayout
+  title="Reviews | Youvngprcuts · Yeremie Mijon"
+  description="What clients say about Yeremie Mijon — barber at Salon Lofts Sawmill, Dublin OH."
+>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-main">YOUVNGPRCUTS<em>.</em></div>
+      <div class="logo-sub">Yeremie Mijon · Dublin, OH</div>
+    </a>
+    <a href="/" class="nav-back">← Home</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="rv-hero">
+  <div class="wrap">
+    <div class="rv-hero-inner">
+      <div class="rv-hero-left">
+        <div class="rv-eyebrow he he1">
+          <div class="rv-rule"></div>
+          <span class="rv-tag">Client Reviews</span>
+        </div>
+        <h1 class="rv-hl he he2">
+          SEE WHY<br/>
+          <span class="rv-outline">THEY</span><br/>
+          <span class="rv-red">KEEP<br/>COMING BACK.</span>
+        </h1>
+      </div>
+      <div class="rv-hero-right he he3">
+        <div class="rv-score-block">
+          <div class="rv-score-num">5.0</div>
+          <div class="rv-score-stars">★★★★★</div>
+          <div class="rv-score-label">Average Rating</div>
+        </div>
+        <div class="rv-meta-list">
+          <div class="rv-meta-row">
+            <span class="rv-meta-key">Total Reviews</span>
+            <span class="rv-meta-val">46</span>
+          </div>
+          <div class="rv-meta-row">
+            <span class="rv-meta-key">Five Star</span>
+            <span class="rv-meta-val">100%</span>
+          </div>
+          <div class="rv-meta-row">
+            <span class="rv-meta-key">Serving Columbus Since</span>
+            <span class="rv-meta-val">2022</span>
+          </div>
+        </div>
+        <a href="https://g.page/r/REPLACE_WITH_YOUR_GOOGLE_REVIEW_LINK/review"
+           target="_blank" rel="noopener" class="rv-leave-btn">
+          Leave a Review →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED QUOTES -->
+<section class="rv-featured">
+  <div class="wrap">
+    <div class="rv-feat-grid">
+      {featured.map((f, i) => (
+        <div class={`rv-feat-card reveal rv-d${i}`}>
+          <div class="rv-feat-num">{String(i + 1).padStart(2,'0')}</div>
+          <blockquote class="rv-feat-q">"{f.quote}"</blockquote>
+          <div class="rv-feat-attr">— {f.name}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ALL REVIEWS -->
+<section class="rv-all">
+  <div class="wrap">
+    <div class="rv-all-header reveal">
+      <span class="sec-label">All 46 Reviews</span>
+      <a href="https://g.page/r/REPLACE_WITH_YOUR_GOOGLE_REVIEW_LINK/review"
+         target="_blank" rel="noopener" class="btn btn-red">Leave a Review →</a>
+    </div>
+    <div class="rv-all-grid">
+      {reviews.map((r, i) => (
+        <article class={`rv-card reveal rv-d${(i % 3) + 1}`}>
+          <div class="rv-card-head">
+            <span class="rv-card-stars">★★★★★</span>
+            <span class="rv-card-idx">{String(i + 1).padStart(2, '0')}</span>
+          </div>
+          <p class="rv-card-q">"{r.quote}"</p>
+          <div class="rv-card-foot">
+            <span class="rv-card-name">{r.name}</span>
+            <span class="rv-card-when">{r.when}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="rv-cta">
+  <div class="wrap">
+    <div class="rv-cta-inner reveal">
+      <div class="rv-cta-text">
+        <h2 class="rv-cta-h">How Did I Do?<br/>Let People Know.</h2>
+        <p class="rv-cta-sub">Takes 30 seconds. Means a lot.</p>
+      </div>
+      <div class="rv-cta-actions">
+        <a href="https://g.page/r/REPLACE_WITH_YOUR_GOOGLE_REVIEW_LINK/review"
+           target="_blank" rel="noopener" class="btn btn-red">Leave a Review →</a>
+        <a href="https://getsqr.co/yeremie-mijon"
+           target="_blank" rel="noopener" class="btn btn-line">Book a Cut →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</BaseLayout>
+
+<style>
+  .nav-back { font-family: var(--fm); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); transition: color .15s; }
+  .nav-back:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .rv-hero { padding: 5rem 0 4rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .rv-hero::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, transparent, var(--red) 15%, var(--red) 85%, transparent); }
+  .rv-hero-inner { display: grid; gap: 4rem; align-items: center; }
+  @media(min-width: 860px) { .rv-hero-inner { grid-template-columns: 1fr 340px; gap: 5rem; } }
+  .rv-eyebrow { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; }
+  .rv-rule { width: 32px; height: 1px; background: var(--red); flex-shrink: 0; }
+  .rv-tag { font-family: var(--fm); font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--red); }
+  .rv-hl { font-family: var(--fd); font-size: clamp(4.5rem, 10vw, 8rem); line-height: .88; letter-spacing: .025em; text-transform: uppercase; }
+  .rv-outline { -webkit-text-stroke: 1px var(--text); color: transparent; }
+  .rv-red { color: var(--red); }
+
+  /* score card */
+  .rv-hero-right { border: 1px solid var(--border); background: var(--bg2); position: relative; overflow: hidden; }
+  .rv-hero-right::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--red); }
+  .rv-score-block { padding: 2rem; text-align: center; border-bottom: 1px solid var(--border); }
+  .rv-score-num { font-family: var(--fd); font-size: 5rem; letter-spacing: .02em; line-height: 1; color: var(--text); }
+  .rv-score-stars { color: var(--red); font-size: 1rem; letter-spacing: .2em; margin: .5rem 0; }
+  .rv-score-label { font-family: var(--fm); font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); }
+  .rv-meta-list { border-bottom: 1px solid var(--border); }
+  .rv-meta-row { display: flex; justify-content: space-between; align-items: center; padding: .75rem 1.5rem; border-bottom: 1px solid var(--border); }
+  .rv-meta-row:last-child { border-bottom: none; }
+  .rv-meta-key { font-family: var(--fm); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+  .rv-meta-val { font-family: var(--fd); font-size: 1.4rem; letter-spacing: .04em; color: var(--text); }
+  .rv-leave-btn { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.5rem; background: var(--red); color: #fff; font-family: var(--fm); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; transition: background .15s, letter-spacing .15s; }
+  .rv-leave-btn:hover { background: var(--red-hi); letter-spacing: .2em; }
+
+  /* ── FEATURED ── */
+  .rv-featured { padding: 5rem 0; background: #0a0908; border-bottom: 1px solid var(--border); }
+  .rv-feat-grid { display: grid; gap: 2px; background: var(--border); }
+  @media(min-width: 700px) { .rv-feat-grid { grid-template-columns: repeat(3, 1fr); } }
+  .rv-feat-card { padding: 3rem 2.5rem; background: #0a0908; display: flex; flex-direction: column; gap: 1.5rem; transition: background .2s; position: relative; overflow: hidden; }
+  .rv-feat-card:hover { background: #0f0e0c; }
+  .rv-feat-num { font-family: var(--fd); font-size: 5rem; letter-spacing: .04em; color: rgba(255,255,255,.04); line-height: 1; position: absolute; bottom: 1rem; right: 1.5rem; transition: color .2s; }
+  .rv-feat-card:hover .rv-feat-num { color: rgba(204,18,9,.15); }
+  .rv-feat-q { font-family: var(--fd); font-size: clamp(1.6rem, 2.8vw, 2.4rem); letter-spacing: .03em; text-transform: uppercase; line-height: 1.05; color: var(--dim); margin: 0; }
+  .rv-feat-card:hover .rv-feat-q { color: var(--text); }
+  .rv-feat-attr { font-family: var(--fm); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--red); }
+
+  /* ── ALL REVIEWS ── */
+  .rv-all { padding: 5rem 0; }
+  .rv-all-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+  .rv-all-grid { display: grid; gap: 1px; background: var(--border); }
+  @media(min-width: 600px) { .rv-all-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media(min-width: 900px) { .rv-all-grid { grid-template-columns: repeat(3, 1fr); } }
+  .rv-card { padding: 1.75rem 1.5rem; background: var(--bg); display: flex; flex-direction: column; gap: 1rem; transition: background .2s; }
+  .rv-card:hover { background: #0d0c0b; }
+  .rv-card-head { display: flex; align-items: center; justify-content: space-between; }
+  .rv-card-stars { color: var(--red); font-size: .8rem; letter-spacing: .1em; }
+  .rv-card-idx { font-family: var(--fd); font-size: 2rem; letter-spacing: .04em; color: rgba(255,255,255,.05); line-height: 1; transition: color .2s; }
+  .rv-card:hover .rv-card-idx { color: rgba(204,18,9,.2); }
+  .rv-card-q { font-size: .9rem; color: var(--dim); line-height: 1.75; font-style: italic; flex: 1; }
+  .rv-card-foot { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--border); padding-top: .85rem; gap: .5rem; flex-wrap: wrap; }
+  .rv-card-name { font-family: var(--fm); font-size: .63rem; letter-spacing: .18em; text-transform: uppercase; color: var(--text); }
+  .rv-card-when { font-family: var(--fm); font-size: .58rem; letter-spacing: .1em; color: var(--dim); white-space: nowrap; }
+
+  /* ── BOTTOM CTA ── */
+  .rv-cta { padding: 5rem 0; background: #0a0908; border-top: 1px solid var(--border); }
+  .rv-cta-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; padding: 3rem; border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .rv-cta-inner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--red); }
+  .rv-cta-inner::after { content: '★★★★★'; position: absolute; right: 2rem; bottom: 1.5rem; font-size: 4rem; letter-spacing: .2em; color: rgba(204,18,9,.06); pointer-events: none; }
+  .rv-cta-h { font-family: var(--fd); font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: .04em; text-transform: uppercase; line-height: .95; margin-bottom: .5rem; }
+  .rv-cta-sub { font-size: .88rem; color: var(--dim); }
+  .rv-cta-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+  /* reveal + entrance */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .rv-d0 { transition-delay: 0s; } .rv-d1 { transition-delay: .1s; } .rv-d2 { transition-delay: .2s; } .rv-d3 { transition-delay: .3s; }
+  @keyframes up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  .he { opacity: 0; animation: up .7s cubic-bezier(.22,1,.36,1) forwards; }
+  .he1{animation-delay:.04s} .he2{animation-delay:.16s} .he3{animation-delay:.3s}
+</style>
+
+<script>
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }),
+    { threshold: 0.06 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

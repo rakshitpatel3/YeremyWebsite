@@ -1,0 +1,56 @@
+---
+const reviews = [
+  { name: 'Charles Bondurant', when: '3 days ago',  quote: "Yeremie does a great job on my son's haircut. He takes his time — doesn't rush. I really appreciate him." },
+  { name: 'Ali',               when: '1 week ago',  quote: '<em>Best barber in the 614!</em>' },
+  { name: 'Michael Kruglov',   when: '1 week ago',  quote: 'Yeremie is <em>fantastic</em>.' },
+  { name: 'Parker Campbell',   when: '2 weeks ago', quote: 'Fantastic job and great to talk to. <em>Definitely returning!</em>' },
+  { name: 'Ameer',             when: '2 weeks ago', quote: 'Yeremie is cracked. <em>Pure art.</em>' },
+  { name: 'Ali Mosalem',       when: '1 month ago', quote: 'Chill, <em>listens</em>, gets it right every time. Clean fades, always leave looking right.' },
+];
+---
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rev-header">
+      <div>
+        <span class="sec-label sr">03 — Reviews</span>
+        <h2 class="sec-head sr sr-d1">What People Say.</h2>
+      </div>
+    </div>
+
+    <div class="rev-grid">
+      {reviews.map((r, i) => (
+        <article class={`rev-c sr sr-d${(i % 3) + 1}`}>
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-q" set:html={`"${r.quote}"`}></p>
+          <div class="rev-hr"></div>
+          <div>
+            <div class="rev-name">{r.name}</div>
+            <div class="rev-when">{r.when}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="rev-footer sr">
+      <a href="/reviews" class="btn btn-line">All Reviews →</a>
+      <a href="https://g.page/r/CTtTL2q0wl9bEAI/review" target="_blank" rel="noopener" class="btn btn-red">Leave a Review →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews { padding: 6rem 0; background: #0f0e0c; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .rev-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+  .rev-grid { display: grid; gap: 1px; background: var(--border); }
+  @media(min-width: 600px) { .rev-grid { grid-template-columns: repeat(3,1fr); } }
+  .rev-c { padding: 1.5rem 1.25rem; background: #0f0e0c; display: flex; flex-direction: column; gap: .85rem; transition: background .2s; }
+  .rev-c:hover { background: #151310; }
+  .rev-stars { letter-spacing: .1em; font-size: .8rem; color: var(--red); }
+  .rev-q { font-size: .88rem; color: var(--dim); line-height: 1.7; font-style: italic; flex: 1; }
+  .rev-q :global(em) { color: var(--text); font-style: normal; }
+  .rev-hr { height: 1px; background: var(--border); }
+  .rev-name { font-family: var(--fm); font-size: .63rem; letter-spacing: .18em; text-transform: uppercase; color: var(--text); }
+  .rev-when { font-family: var(--fm); font-size: .58rem; letter-spacing: .1em; color: var(--dim); margin-top: .2rem; }
+  .rev-footer { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-top: 2rem; }
+</style>

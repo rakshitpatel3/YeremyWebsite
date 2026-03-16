@@ -1,0 +1,63 @@
+---
+// No props — static content
+---
+
+<section class="location" id="location">
+  <div class="wrap">
+    <span class="sec-label sr">04 — Location</span>
+    <h2 class="sec-head sr sr-d1">Find the Shop.</h2>
+
+    <div class="loc-grid">
+      <div class="loc-panel sr sr-d2">
+        <div class="loc-lbl">Address &amp; Hours</div>
+        <div class="loc-addr">
+          Salon Lofts Dublin Sawmill<br/>
+          Suite 13 · 7501 Sawmill Rd<br/>
+          Dublin, OH 43016
+        </div>
+        <div class="hrs">
+          <span class="d">Mon</span>     <span>10am – 7pm</span>
+          <span class="d">Tue</span>     <span class="off">Closed</span>
+          <span class="d">Wed – Sat</span><span>10am – 7pm</span>
+          <span class="d">Sun</span>     <span>11am – 4pm</span>
+        </div>
+        <p class="loc-foot">Free parking in the shared lot. Walk-ins welcome — text first to check availability.</p>
+      </div>
+
+      <div class="dir-panel sr sr-d3">
+        <div>
+          <div class="loc-lbl">Get Directions</div>
+          <p class="dir-copy">
+            <strong>Salon Lofts Sawmill</strong> — off Sawmill Rd in Dublin. Suite 13 is inside, free lot right out front.
+            Suite 13 is inside, free lot right out front.
+          </p>
+        </div>
+        <div class="dir-btns">
+          <a class="btn btn-red"
+             href="https://maps.apple.com/?daddr=7501%20Sawmill%20Rd%2C%20Dublin%2C%20OH%2043016&dirflg=d"
+             target="_blank" rel="noopener">Apple Maps →</a>
+          <a class="btn btn-line"
+             href="https://www.google.com/maps/dir/?api=1&destination=7501+Sawmill+Rd,+Dublin,+OH+43016"
+             target="_blank" rel="noopener">Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .location { padding: 6rem 0; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .loc-grid { display: grid; gap: 2px; margin-top: 2.5rem; background: var(--border); }
+  @media(min-width: 900px) { .loc-grid { grid-template-columns: 1.1fr 1fr; } }
+  .loc-panel { background: var(--bg); padding: 2rem; }
+  .loc-lbl { font-family: var(--fm); font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--red); margin-bottom: 1.1rem; }
+  .loc-addr { font-size: 1.05rem; line-height: 1.9; color: var(--text); margin-bottom: 1.6rem; }
+  .hrs { display: grid; grid-template-columns: auto 1fr; gap: .3rem 1.4rem; font-size: .85rem; }
+  .hrs .d { color: var(--text); }
+  .hrs .off { color: var(--red); opacity: .6; }
+  .loc-foot { font-size: .8rem; color: var(--dim); font-style: italic; margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+  .dir-panel { background: var(--bg); padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
+  .dir-copy { font-size: .9rem; color: var(--dim); line-height: 1.7; }
+  .dir-copy strong { color: var(--text); }
+  .dir-btns { display: flex; flex-wrap: wrap; gap: .75rem; }
+</style>

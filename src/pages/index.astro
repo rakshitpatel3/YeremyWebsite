@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav        from '../components/Nav.astro';
+import Hero       from '../components/Hero.astro';
+import About      from '../components/About.astro';
+import Gallery    from '../components/Gallery.astro';
+import Reviews    from '../components/Reviews.astro';
+import Location   from '../components/Location.astro';
+import Contact    from '../components/Contact.astro';
+import Footer     from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Youvngprcuts | Yeremie Mijon · Barber · Dublin OH"
+  description="Book with Yeremie Mijon at Salon Lofts Sawmill, Dublin OH. Clean fades, sharp lineups, beard work — by appointment."
+>
+  <Nav />
+  <main>
+    <Hero />
+    <About />
+    <Gallery />
+    <Reviews />
+    <Location />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Scroll reveal — runs once on page load
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('on');
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.sr').forEach((el) => io.observe(el));
+</script>
