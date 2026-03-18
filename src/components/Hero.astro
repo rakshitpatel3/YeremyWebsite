@@ -18,13 +18,17 @@
           <span class="red">AVERAGE.</span>
         </h1>
         <p class="hero-body he he3">
-          <strong>Stay fresh and consistent.</strong> Book your next cut below.
+          Sharp fades. Clean lineups. <strong>Every time.</strong><br/>
+          Dublin, OH — book your slot below.
         </p>
         <div class="hero-cta he he4">
           <a href="https://getsqr.co/yeremie-mijon" target="_blank" rel="noopener" class="btn btn-red">
             Book an Appointment →
           </a>
         </div>
+        <p class="hero-meta he he5">
+          Salon Lofts Sawmill · Suite 13 · <span>Dublin, OH 43016</span>
+        </p>
       </div>
 
       <!-- Right: barber info card -->
@@ -54,11 +58,11 @@
         </div>
 
         <div class="bc-svcs">
-          <span class="bc-svc">Haicut</span>
-          <span class="bc-svc">Lineup</span>
+          <span class="bc-svc">Fades</span>
+          <span class="bc-svc">Lineups</span>
           <span class="bc-svc">Beard</span>
           <span class="bc-svc">Eyebrows</span>
-          <span class="bc-svc">Designs</span>
+          <span class="bc-svc">Kids</span>
         </div>
 
         <div class="bc-where">
@@ -68,6 +72,11 @@
           </div>
           <div class="live-dot" id="liveDot"></div>
         </div>
+
+        <a href="https://getsqr.co/yeremie-mijon" target="_blank" rel="noopener" class="bc-book">
+          <span>Book a Session</span>
+          <span class="bc-arr">→</span>
+        </a>
       </div>
 
     </div>
@@ -158,10 +167,16 @@
       pill.textContent = '● Open Now';
     } else {
       let next = '';
-      for (let i = 1; i <= 7; i++) {
-        const d = (day + i) % 7;
-        const h2 = SHOP_HOURS[d];
-        if (h2) { next = DAY_NAMES[d] + ' ' + h2[0] + 'am'; break; }
+      // check if the shop opens later today first
+      const todayHrs = SHOP_HOURS[day];
+      if (todayHrs && h < todayHrs[0]) {
+        next = DAY_NAMES[day] + ' ' + todayHrs[0] + 'am';
+      } else {
+        for (let i = 1; i <= 7; i++) {
+          const d = (day + i) % 7;
+          const h2 = SHOP_HOURS[d];
+          if (h2) { next = DAY_NAMES[d] + ' ' + h2[0] + 'am'; break; }
+        }
       }
       pill.textContent = '● Closed' + (next ? ' · Opens ' + next : '');
     }
