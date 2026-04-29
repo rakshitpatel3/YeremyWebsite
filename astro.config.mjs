@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://youvngprcuts.com',
-  // No framework needed — pure Astro HTML components
+  site: 'https://www.youvngprcuts.com',
+  integrations: [sitemap()],
 });
