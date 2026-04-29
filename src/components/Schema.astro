@@ -1,0 +1,217 @@
+---
+// src/components/Schema.astro
+// LocalBusiness / HairSalon structured data for Google rich results.
+// Drop this in BaseLayout.astro inside <head> on every page.
+//
+// After deploying, validate at:
+//   https://search.google.com/test/rich-results
+//   https://validator.schema.org/
+
+const SITE = "https://www.youvngprcuts.com";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "@id": `${SITE}/#business`,
+  "name": "youvngprcuts",
+  "alternateName": "Yeremie Mijon Cuts",
+  "description":
+    "Sharp fades, clean lineups, beards, eyebrows, and kids cuts by Yeremie Mijon. Private loft inside Salon Lofts Sawmill, Dublin OH. Book online.",
+  "url": SITE,
+  "image": [
+    `${SITE}/Gallery/nba.jpg`,
+    `${SITE}/Gallery/img5.jpg`,
+    `${SITE}/Gallery/lonzo.jpg`,
+  ],
+  "logo": `${SITE}/Favi/android-chrome-512x512.png`,
+  "priceRange": "$$",
+  "currenciesAccepted": "USD",
+  "paymentAccepted": "Cash, Credit Card, Debit Card, Apple Pay",
+  "founder": {
+    "@type": "Person",
+    "name": "Yeremie Mijon",
+  },
+  "foundingDate": "2022",
+  "slogan": "Never been average.",
+
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "7501 Sawmill Rd, Suite 13",
+    "addressLocality": "Dublin",
+    "addressRegion": "OH",
+    "postalCode": "43016",
+    "addressCountry": "US",
+  },
+
+  "telephone": "+1-787-975-3714",
+
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.1294,
+    "longitude": -83.0754,
+  },
+
+  "areaServed": [
+    { "@type": "City", "name": "Dublin" },
+    { "@type": "City", "name": "Columbus" },
+    { "@type": "City", "name": "Powell" },
+    { "@type": "City", "name": "Hilliard" },
+    { "@type": "City", "name": "Worthington" },
+  ],
+
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Monday",
+      "opens": "10:00",
+      "closes": "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "10:00",
+      "closes": "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "11:00",
+      "closes": "16:00",
+    },
+  ],
+
+  "sameAs": [
+    "https://www.instagram.com/youvngprcuts",
+    "https://www.tiktok.com/@youvngprcuts",
+    "https://g.page/r/CTtTL2q0wl9bEAI",
+    "https://share.google/ji0pMW2OCxtBx48Oa",
+  ],
+
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "20",
+    "bestRating": "5",
+    "worstRating": "1",
+  },
+
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "VIP Package",
+          "description": "Full service, no beard. 1 hr 30 mins.",
+        },
+        "price": "100.00",
+        "priceCurrency": "USD",
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "VIP Package with Beard",
+          "description": "Full service with beard. 1 hr 30 mins.",
+        },
+        "price": "120.00",
+        "priceCurrency": "USD",
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Haircut",
+          "description": "Standard haircut. 45 mins.",
+        },
+        "price": "40.00",
+        "priceCurrency": "USD",
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Beard",
+          "description": "Beard trim and shape. 15 mins.",
+        },
+        "price": "20.00",
+        "priceCurrency": "USD",
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Lineup",
+          "description": "Clean lineup. 30 mins.",
+        },
+        "price": "30.00",
+        "priceCurrency": "USD",
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Eyebrows",
+          "description": "Eyebrow cleanup. 15 mins.",
+        },
+        "price": "10.00",
+        "priceCurrency": "USD",
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Goatee",
+          "description": "Goatee shape. 15 mins.",
+        },
+        "price": "5.00",
+        "priceCurrency": "USD",
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Design",
+          "description": "Custom hair design. 15 mins.",
+        },
+        "price": "15.00",
+        "priceCurrency": "USD",
+      },
+    ],
+  },
+
+  "knowsAbout": [
+    "Fades",
+    "Skin fades",
+    "Lineups",
+    "Beard trims",
+    "Eyebrow cleanup",
+    "Kids haircuts",
+    "Hair design",
+  ],
+
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://getsqr.co/yeremie-mijon",
+      "inLanguage": "en-US",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform",
+      ],
+    },
+    "result": {
+      "@type": "Reservation",
+      "name": "Barber appointment",
+    },
+  },
+};
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>
