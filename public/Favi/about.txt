@@ -1,4 +1,4 @@
-This favicon was generated using the following font:
+This favicon was generated using the following font::
 
 - Font Title: Goldman
 - Font Author: undefined
